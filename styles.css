@@ -2,12 +2,12 @@ body {
     font-family: "Gill Sans", sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: green/* Set the background color with opacity  rgba(249, 95, 143, 0.6); */
+    background-color: rgba(249, 95, 143, 1.8)/* Set the background color with opacity  ; */
 
 }
 
 h1 {
-    color: #DF99F1;
+    color: #83408D;
 }
 
 ul {
@@ -18,7 +18,7 @@ ul {
 a {
     display: block;
     margin-bottom: 10px;
-    color: #8447ab;
+    color: #FF7B1A;
     text-decoration: none;
 }
 

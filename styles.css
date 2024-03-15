@@ -2,7 +2,7 @@ body {
     font-family: "Gill Sans", sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: rgba(249, 95, 143, 0.6); /* Set the background color with opacity */
+    background-color: green/* Set the background color with opacity  rgba(249, 95, 143, 0.6); */
 
 }
 

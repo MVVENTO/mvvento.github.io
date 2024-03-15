@@ -1,0 +1,25 @@
+body {
+    font-family: "Gill Sans", sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #DF99F1;
+}
+
+ul {
+    list-style-type: square;
+    padding: 0;
+}
+
+a {
+    display: block;
+    margin-bottom: 10px;
+    color: #8447ab;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline wavy orange;
+}

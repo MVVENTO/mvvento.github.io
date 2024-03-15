@@ -2,6 +2,8 @@ body {
     font-family: "Gill Sans", sans-serif;
     margin: 0;
     padding: 20px;
+    background-color: rgba(249, 95, 143, 0.6); /* Set the background color with opacity */
+
 }
 
 h1 {
@@ -24,7 +26,4 @@ a:hover {
     text-decoration: underline ;
 }
 
-div {
-  background-color: #F95F8F;
-  opacity: 0.7;
-}
+

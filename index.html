@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minimalistic Store</title>
   <style>
+    /* Basic styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -52,12 +53,61 @@
       margin-top: 50px;
       text-align: center;
     }
+
+    /* Round buttons */
+    button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+
+    button:hover {
+      background-color: #222;
+    }
+
+    /* Animated button */
+    .animated {
+      animation: button-pulse 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes button-pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    /* Responsive Navigation */
+    #menu-btn {
+      display: none; /* Hide on larger screens initially */
+    }
+
+    nav {
+      display: flex; /* Style your navigation... */
+    }
+
+    nav.active {
+      display: block; /* Show navigation on click */
+    }
+
+    @media (max-width: 768px) {
+      #menu-btn {
+        display: block; /* Show menu button on smaller screens */
+      }
+
+      nav {
+        display: none; /* Hide navigation initially */
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Minimalistic Store</h1>
+      <button id="menu-btn">Menu</button>
       <nav>
         <ul>
           <li><a href="#">Home</a></li>
@@ -70,7 +120,7 @@
       <section class="launch">
         <h2>Welcome to Our Store</h2>
         <p>Click the button below to start shopping!</p>
-        <button id="shop-now">Shop Now</button>
+        <button id="shop-now" class="animated">Shop Now</button>
       </section>
     </main>
     <footer>
@@ -79,5 +129,12 @@
   </div>
 
   <script>
-    document.getElementById("shop-now").addEventListener("click", function() {
-      window.location.
+    const menuBtn = document.getElementById("menu-btn");
+    const navigation = document.querySelector("nav");
+
+    menuBtn.addEventListener("click", function() {
+      navigation.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

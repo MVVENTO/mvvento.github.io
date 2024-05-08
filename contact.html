@@ -59,6 +59,16 @@
       margin: 5px 0;
     }
 
+    .product-item button {
+      background-color: #f5f5f5;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      display: block; /* Center the button horizontally */
+    }
+
     /* Responsive adjustments for smaller screens */
     @media (max-width: 768px) {
       .products {
@@ -75,7 +85,7 @@
     <section class="products">
       <h2>Our Products</h2>
       <ul class="product-list">
-        </ul>
+      </ul>
     </section>
   </main>
   <footer>
@@ -121,16 +131,12 @@
       price.textContent = `$${product.price}`;
       item.appendChild(price);
 
-      // You can add a button or link for "Add to Cart" functionality here
+      // Add a button for each product
+      const button = document.createElement('button');
+      button.textContent = "Add to Cart";
+      item.appendChild(button);
 
       return item;
     }
 
     // Loop through products and create product items
-    products.forEach(product => {
-      const productItem = createProductItem(product);
-      productList.appendChild(productItem);
-    });
-  </script>
-</body>
-</html>

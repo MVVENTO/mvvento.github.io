@@ -197,19 +197,14 @@ function onWindowResize() {
 
 
 
-/*     Fullscreen btn     */
-// let fullscreen;
-// let fsEnter = document.getElementById('fullscr');
-// fsEnter.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     if (!fullscreen) {
-//         fullscreen = true;
-//         document.documentElement.requestFullscreen();
-//         fsEnter.innerHTML = "Exit Fullscreen";
-//     }
-//     else {
-//         fullscreen = false;
-//         document.exitFullscreen();
-//         fsEnter.innerHTML = "Go Fullscreen";
-//     }
-// });
+/*     Shop btn     */
+ // Create the shop button element
+    const shopButton = document.createElement('a');
+    shopButton.textContent = "Shop Now";
+    shopButton.classList.add('shop-button'); // Add class for styling
+    shopButton.href = "contact.html";
+
+    // Add the button element to the body
+    document.body.appendChild(shopButton);
+    }
+ });

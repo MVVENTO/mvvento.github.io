@@ -199,12 +199,21 @@ function onWindowResize() {
 
 /*     Shop btn     */
  // Create the shop button element
-    const shopButton = document.createElement('a');
-    shopButton.textContent = "Shop Now";
-    shopButton.classList.add('shop-button'); // Add class for styling
-    shopButton.href = "contact.html";
+// Assuming the button has the ID "shop"
+const shopButton = document.getElementById('shop');
 
-    // Add the button element to the body
-    document.body.appendChild(shopButton);
+if (shopButton) { // Check if the element exists
+  shopButton.addEventListener('click', function (e) {
+    const newShopButton = document.createElement('a'); // Create a new button element (optional)
+    newShopButton.textContent = "Shop Now";
+    newShopButton.classList.add('shop-button'); // Add class for styling
+    newShopButton.href = "contact.html";
+
+    // Add the new button element to the body (optional)
+    document.body.appendChild(newShopButton);
+  });
+} else {
+  console.error("Shop button element with ID 'shop' not found!");
+
     }
  });

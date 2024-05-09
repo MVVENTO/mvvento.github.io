@@ -199,21 +199,20 @@ function onWindowResize() {
 
 /*     Shop btn     */
  // Create the shop button element
-// Assuming the button has the ID "shop"
+
+    // Get the button element
 const shopButton = document.getElementById('shop');
 
-if (shopButton) { // Check if the element exists
-  shopButton.addEventListener('click', function (e) {
-    const newShopButton = document.createElement('a'); // Create a new button element (optional)
-    newShopButton.textContent = "Shop Now";
-    newShopButton.classList.add('shop-button'); // Add class for styling
-    newShopButton.href = "contact.html";
+if (shopButton) {
+  // Set the button text
+  shopButton.textContent = "Enter Shop";
 
-    // Add the new button element to the body (optional)
-    document.body.appendChild(newShopButton);
-  });
+  // Set the button link (assuming you want it to link to contact.html)
+  shopButton.href = "contact.html";
 } else {
   console.error("Shop button element with ID 'shop' not found!");
+}
+
 
     }
  });

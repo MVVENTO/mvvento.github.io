@@ -7,7 +7,6 @@ let renderer,
   controls,
   container = document.getElementById("canvas_container"),
   timeout_Debounce,
-  noise = new SimplexNoise(),
   cameraSpeed = 0,
   blobScale = 3;
 
@@ -139,11 +138,8 @@ function animate() {
   nucleus.geometry.vertices.forEach(function (v) {
     let time = Date.now();
     v.normalize();
-    let distance = nucleus.geometry.parameters.radius + noise.noise3D(
-      v.x + time * 0.0005,
-      v.y + time * 0.0003,
-      v.z + time * 0.0008
-    ) * blobScale;
+    // Let's remove the noise calculation for simplicity
+    let distance = nucleus.geometry.parameters.radius * blobScale;
     v.multiplyScalar(distance);
   });
   nucleus.geometry.verticesNeedUpdate = true;

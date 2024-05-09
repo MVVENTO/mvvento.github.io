@@ -1,15 +1,16 @@
 let renderer,
-scene,
-camera,
-sphereBg,
-nucleus,
-stars,
-controls,
-container = document.getElementById("canvas_container"),
-timeout_Debounce,
-noise = new SimplexNoise(),
-cameraSpeed = 0,
-blobScale = 3;
+  scene,
+  camera,
+  sphereBg,
+  nucleus,
+  stars,
+  controls,
+  container = document.getElementById("canvas_container"),
+  timeout_Debounce,
+  noise = new SimplexNoise(),
+  cameraSpeed = 0,
+  blobScale = 3;
+
 
 
 init();
@@ -102,20 +103,22 @@ function init() {
 
 
     /*    Fixed Stars   */
-    function createStars(texture, size, total) {
-        let pointGeometry = new THREE.Geometry();
-        let pointMaterial = new THREE.PointsMaterial({
-            size: size,
-            map: texture,
-            blending: THREE.AdditiveBlending,                      
-        });
+function createStars(texture, size, total) {
+  let pointGeometry = new THREE.Geometry();
+  let pointMaterial = new THREE.PointsMaterial({
+    size: size,
+    map: texture,
+    blending: THREE.AdditiveBlending,
+  });
 
-        for (let i = 0; i < total; i++) {
-            let radius = THREE.MathUtils.randInt(149, 70); 
-            let particles = randomPointSphere(radius);
-            pointGeometry.vertices.push(particles);
-        }
-        return new THREE.Points(pointGeometry, pointMaterial);
+  for (let i = 0; i < total; i++) {
+    let radius = THREE.MathUtils.randInt(149, 70);
+    let particle = randomPointSphere(radius);
+    pointGeometry.vertices.push(particle);
+  }
+
+  return new THREE.Points(pointGeometry, pointMaterial);
+}
     }
     scene.add(createStars(texture1, 15, 20));   
     scene.add(createStars(texture2, 5, 5));

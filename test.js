@@ -165,7 +165,6 @@ starsGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Arra
   stars.geometry.verticesNeedUpdate = true;
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
-}
 
 /*     Resize     */
 window.addEventListener("resize", () => {

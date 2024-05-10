@@ -140,45 +140,6 @@ starsGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Arra
   scene.add(createStars(texture4, 7, 5));
 }
 
-function animate() {
-    // Stars  Animation
-    let vertices = stars.geometry.attributes.position.array;
-    for (let i = 0; i < vertices.length; i += 3) {
-        let x = vertices[i];
-        let y = vertices[i + 1];
-        let z = vertices[i + 2];
-
-        let particleIndex = i / 3;
-        let particle = stars.geometry.vertices[particleIndex];
-        let velocity = particle.velocity; // Retrieve velocity from the particle object
-      
-        velocity -= 0.3;
-
-        x += (0 - x) / velocity;
-        y += (0 - y) / velocity;
-        z += (0 - z) / velocity;
-
-
-        if (x <= 5 && x >= -5 && z <= 5 && z >= -5) {
-            let startX = particle.startX;
-            let startY = particle.startY;
-            let startZ = particle.startZ;
-            x = startX;
-            y = startY;
-            z = startZ;
-            velocity = THREE.MathUtils.randInt(50, 300);
-        }
-
-        vertices[i] = x;
-        vertices[i + 1] = y;
-        vertices[i + 2] = z;
-
-        particle.velocity = velocity; // Update velocity in the particle object
-    }
-    stars.geometry.attributes.position.needsUpdate = true;
-
-
-
 
 
   // Nucleus Animation

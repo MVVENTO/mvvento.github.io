@@ -113,23 +113,27 @@ starsGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Arra
   scene.add(stars);
 
   /*    Fixed Stars   */
-
-  function createStars(texture, size, total) {
+function createStars(texture, size, total) {
     let pointGeometry = new THREE.BufferGeometry();
-    let pointMaterial = new THREE.PointsMaterial({
-      size: size,
-      map: texture,
-      blending: THREE.AdditiveBlending,
-    });
+    let positions = [];
 
     for (let i = 0; i < total; i++) {
-      let radius = THREE.MathUtils.randInt(149, 70);
-      let particle = randomPointSphere(radius);
-      pointGeometry.vertices.push(particle);
+        let radius = THREE.MathUtils.randInt(149, 70);
+        let particle = randomPointSphere(radius);
+        positions.push(particle.x, particle.y, particle.z);
     }
 
+    pointGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+
+    let pointMaterial = new THREE.PointsMaterial({
+        size: size,
+        map: texture,
+        blending: THREE.AdditiveBlending,
+    });
+
     return new THREE.Points(pointGeometry, pointMaterial);
-  }
+}
+
 
   scene.add(createStars(texture1, 15, 20));
   scene.add(createStars(texture2, 5, 5));

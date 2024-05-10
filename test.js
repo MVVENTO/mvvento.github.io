@@ -67,7 +67,74 @@ function init() {
   sphereBg = new THREE.Mesh(geometrySphereBg, materialSphereBg);
   scene.add(sphereBg);
 
+/*    Moving Stars   */
+  function randomPointSphere(radius) {
+    let u = Math.random();
+    let v = Math.random();
+    let theta = 2 * Math.PI * u;
+    let phi = Math.acos(2 * v - 1);
+    let x = radius * Math.sin(phi) * Math.cos(theta);
+    let y = radius * Math.sin(phi) * Math.sin(theta);
+    let z = radius * Math.cos(phi);
+    return new THREE.Vector3(x, y, z);
+}
+  let starsGeometry = new THREE.BufferGeometry();
+let positions = [];
 
+for (let i = 0; i < 50; i++) {
+    let particleStar = randomPointSphere(150);
+
+    particleStar.velocity = THREE.MathUtils.randInt(50, 200);
+
+    particleStar.startX = particleStar.x;
+    particleStar.startY = particleStar.y;
+    particleStar.startZ = particleStar.z;
+
+    positions.push(particleStar.x, particleStar.y, particleStar.z);
+}
+
+starsGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+
+
+  let starsMaterial = new THREE.PointsMaterial({
+    size: 5,
+    color: "#ffffff",
+    transparent: true,
+    opacity: 0.8,
+    map: textureStar,
+    blending: THREE.AdditiveBlending,
+  });
+  starsMaterial.depthWrite = false;
+  stars = new THREE.Points(starsGeometry, starsMaterial);
+  scene.add(stars);
+
+  /*    Fixed Stars   */
+  function createStars(texture, size, total) {
+    let pointGeometry = new THREE.BufferGeometry();
+    let positions = [];
+
+    for (let i = 0; i < total; i++) {
+        let radius = THREE.MathUtils.randInt(149, 70);
+        let particle = randomPointSphere(radius);
+        positions.push(particle.x, particle.y, particle.z);
+    }
+
+    pointGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+
+    let pointMaterial = new THREE.PointsMaterial({
+        size: size,
+        map: texture,
+        blending: THREE.AdditiveBlending,
+    });
+
+    return new THREE.Points(pointGeometry, pointMaterial);
+}
+
+
+  scene.add(createStars(texture1, 15, 20));
+  scene.add(createStars(texture2, 5, 5));
+  scene.add(createStars(texture4, 7, 5));
+}
 
  
 /*     Resize     */

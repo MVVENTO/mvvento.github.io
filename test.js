@@ -69,6 +69,17 @@ function init() {
   scene.add(sphereBg);
 
   /*    Moving Stars   */
+  function randomPointSphere(radius) {
+    let u = Math.random();
+    let v = Math.random();
+    let theta = 2 * Math.PI * u;
+    let phi = Math.acos(2 * v - 1);
+    let x = radius * Math.sin(phi) * Math.cos(theta);
+    let y = radius * Math.sin(phi) * Math.sin(theta);
+    let z = radius * Math.cos(phi);
+    return new THREE.Vector3(x, y, z);
+}
+
 
   let starsGeometry = new THREE.BufferGeometry();
 

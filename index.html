@@ -98,7 +98,7 @@
     }
 
     function createParticle(x, y, type) {
-      const particle = document.createElement('particle');
+      const particle = document.createElement('span'); // Changed from 'particle' to 'span'
       document.body.appendChild(particle);
       let width = Math.floor(Math.random() * 30 + 8);
       let height = width;

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crystal Cove</title>
+  <style>
+    /* Your CSS code here */
+    body {
+      margin: 0;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      background-image: url("https://user-images.githubusercontent.com/26748614/96337246-f14d4580-1085-11eb-8793-a86d929e034d.jpg");
+      background-size: cover;
+      backdrop-filter: brightness(50%);
+    }
+
+    canvas {
+      display: block;
+    }
+
+    #canvas_container {
+      width: 100%;
+      height: 100vh;
+    }
+
+    button {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1px solid white;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      padding: 0.5rem 0.9em;
+      background: #000000;
+      color: white;
+      -webkit-font-smoothing: antialiased;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    button:hover {
+      background: #ffffff;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas_container">
+    <canvas class="webgl"></canvas>
+  </div>
+  <!-- Use a button element -->
+  <button id="shop">Enter Shop</button>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.145.0/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    // Wait for the DOM content to be fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      // Get a reference to the button element
+      const shopButton = document.getElementById('shop');
+
+      // Add a click event listener to the button
+      shopButton.addEventListener('click', function() {
+        // This function will be executed when the button is clicked
+        console.log('Button clicked!');
+        // Add your desired functionality here, such as navigating to another page
+        window.location.href = 'product1.html'; 
+      });
+    });
+
+    function pop(e) {
+      let amount = 30;
+      switch (e.target.dataset.type) {
+        case 'shadow':
+        case 'line':
+          amount = 60;
+          break;
+      }
+      // Quick check if user clicked the button using a keyboard
+      if (e.clientX === 0 && e.clientY === 0) {
+        const bbox = e.target.getBoundingClientRect();
+        const x = bbox.left + bbox.width / 2;
+        const y = bbox.top + bbox.height / 2;
+        for (let i = 0; i < 30; i++) {
+          // We call the function createParticle 30 times
+          // We pass the coordinates of the button for x & y values
+          createParticle(x, y, e.target.dataset.type);
+        }
+      } else {
+        for (let i = 0; i < amount; i++) {
+          createParticle(e.clientX, e.clientY + window.scrollY, e.target.dataset.type);
+        }
+      }
+    }
+
+    function createParticle(x, y, type) {
+      const particle = document.createElement('particle');
+      document.body.appendChild(particle);
+      let width = Math.floor(Math.random() * 30 + 8);
+      let height = width;
+      let destinationX = (Math.random() - 0.5) * 300;
+      let destinationY = (Math.random() - 0.5) * 300;
+      let rotation = Math.random() * 520;
+      let delay = Math.random() * 200;
+      
+      switch (type) {
+        case 'emoji':
+          particle.innerHTML = ['❤','🧡','💛','💚','💙','💜','🤎'][Math.floor(Math.random() * 7)];
+          particle.style.fontSize = `${Math.random() * 24 + 10}px`;
+          width = height = 'auto';
+          break;
+      }
+      
+      particle.style.width = `${width}px`;
+      particle.style.height = `${height}px`;
+      const animation = particle.animate([
+        {
+          transform: `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(0deg)`,
+          opacity: 1
+        },
+        {
+          transform: `translate(-50%, -50%) translate(${x + destinationX}px, ${y + destinationY}px) rotate(${rotation}deg)`,
+          opacity: 0
+        }
+      ], {
+        duration: Math.random() * 1000 + 5000,
+        easing: 'cubic-bezier(0, .9, .57, 1)',
+        delay: delay
+      });
+      animation.onfinish = removeParticle;
+    }
+
+    function removeParticle(e) {
+      e.srcElement.effect.target.remove();
+    }
+
+    if (document.body.animate) {
+      document.querySelectorAll('button').forEach(button => button.addEventListener('click', pop));
+    }
+  </script

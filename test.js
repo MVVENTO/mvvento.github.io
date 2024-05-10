@@ -11,7 +11,6 @@ let renderer,
   blobScale = 3;
 
 init();
-animate();
 
 function init() {
   scene = new THREE.Scene();
@@ -164,7 +163,7 @@ starsGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Arra
   controls.update();
   stars.geometry.verticesNeedUpdate = true;
   renderer.render(scene, camera);
-  requestAnimationFrame(animate);
+  requestAnimationFrame();
 
 /*     Resize     */
 window.addEventListener("resize", () => {
@@ -193,3 +192,4 @@ if (shopButton) {
 } else {
   console.error("Shop button element with ID 'shop' not found!");
 }
+

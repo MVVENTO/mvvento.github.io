@@ -69,7 +69,8 @@ function init() {
   scene.add(sphereBg);
 
   /*    Moving Stars   */
-  let starsGeometry = new THREE.Geometry();
+
+  let starsGeometry = new THREE.BufferGeometry();
 
   for (let i = 0; i < 50; i++) {
     let particleStar = randomPointSphere(150);
@@ -82,6 +83,8 @@ function init() {
 
     starsGeometry.vertices.push(particleStar);
   }
+
+  
   let starsMaterial = new THREE.PointsMaterial({
     size: 5,
     color: "#ffffff",
@@ -95,8 +98,9 @@ function init() {
   scene.add(stars);
 
   /*    Fixed Stars   */
+
   function createStars(texture, size, total) {
-    let pointGeometry = new THREE.Geometry();
+    let pointGeometry = new THREE.BufferGeometry();
     let pointMaterial = new THREE.PointsMaterial({
       size: size,
       map: texture,

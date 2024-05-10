@@ -139,23 +139,34 @@ starsGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Arra
   scene.add(createStars(texture2, 5, 5));
   scene.add(createStars(texture4, 7, 5));
 }
-
 function animate() {
-  // Stars  Animation
-  stars.geometry.vertices.forEach(function (v) {
-    v.x += (0 - v.x) / v.velocity;
-    v.y += (0 - v.y) / v.velocity;
-    v.z += (0 - v.z) / v.velocity;
+    // Stars  Animation
+    let vertices = stars.geometry.attributes.position.array;
+    for (let i = 0; i < vertices.length; i += 3) {
+        let x = vertices[i];
+        let y = vertices[i + 1];
+        let z = vertices[i + 2];
 
-    v.velocity -= 0.3;
+        x += (0 - x) / velocity;
+        y += (0 - y) / velocity;
+        z += (0 - z) / velocity;
 
-    if (v.x <= 5 && v.x >= -5 && v.z <= 5 && v.z >= -5) {
-      v.x = v.startX;
-      v.y = v.startY;
-      v.z = v.startZ;
-      v.velocity = THREE.MathUtils.randInt(50, 300);
+        velocity -= 0.3;
+
+        if (x <= 5 && x >= -5 && z <= 5 && z >= -5) {
+            x = startX;
+            y = startY;
+            z = startZ;
+            velocity = THREE.MathUtils.randInt(50, 300);
+        }
+
+        vertices[i] = x;
+        vertices[i + 1] = y;
+        vertices[i + 2] = z;
     }
-  });
+    stars.geometry.attributes.position.needsUpdate = true;
+
+
 
   // Nucleus Animation
   nucleus.geometry.vertices.forEach(function (v) {

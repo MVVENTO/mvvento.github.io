@@ -79,9 +79,8 @@ function init() {
     let z = radius * Math.cos(phi);
     return new THREE.Vector3(x, y, z);
 }
-
 let starsGeometry = new THREE.BufferGeometry();
-starsGeometry.vertices = [];
+starsGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(0), 3)); // Initialize vertices as an empty array
 
 for (let i = 0; i < 50; i++) {
     let particleStar = randomPointSphere(150);
@@ -92,8 +91,9 @@ for (let i = 0; i < 50; i++) {
     particleStar.startY = particleStar.y;
     particleStar.startZ = particleStar.z;
 
-    starsGeometry.vertices.push(particleStar);
+    starsGeometry.attributes.position.array.push(particleStar.x, particleStar.y, particleStar.z); // Add each coordinate directly to the position attribute
 }
+
 
   
   let starsMaterial = new THREE.PointsMaterial({

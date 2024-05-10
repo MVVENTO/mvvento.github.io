@@ -151,12 +151,13 @@ function animate() {
         let particleIndex = i / 3;
         let particle = stars.geometry.vertices[particleIndex];
         let velocity = particle.velocity; // Retrieve velocity from the particle object
+      
+        velocity -= 0.3;
 
         x += (0 - x) / velocity;
         y += (0 - y) / velocity;
         z += (0 - z) / velocity;
 
-        velocity -= 0.3;
 
         if (x <= 5 && x >= -5 && z <= 5 && z >= -5) {
             let startX = particle.startX;

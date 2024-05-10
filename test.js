@@ -113,7 +113,7 @@ starsGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Arra
   scene.add(stars);
 
   /*    Fixed Stars   */
-function createStars(texture, size, total) {
+  function createStars(texture, size, total) {
     let pointGeometry = new THREE.BufferGeometry();
     let positions = [];
 

@@ -19,7 +19,7 @@ canvas {
 
 button {
     position: absolute;
-    bottom: 20px; /* Adjust this value to move the button higher or lower */
+    bottom: 5%; 
     left: 50%;
     transform: translateX(-50%);
     border: 1px solid white;
@@ -32,6 +32,7 @@ button {
     font-weight: bold;
     cursor: pointer;
     transition: all .3s;
+    
 }
 
 button:hover {

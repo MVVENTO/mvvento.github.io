@@ -5,7 +5,7 @@ body {
     height: 100vh;
     background-image: url("https://user-images.githubusercontent.com/26748614/96337246-f14d4580-1085-11eb-8793-a86d929e034d.jpg");
     background-size: cover;
-    backdrop-filter:  brightness(50%);
+    backdrop-filter: brightness(50%);
 }
 
 canvas {
@@ -19,7 +19,7 @@ canvas {
 
 button {
     position: absolute;
-    bottom: 5%;
+    bottom: 20px; /* Adjust this value to move the button higher or lower */
     left: 50%;
     transform: translateX(-50%);
     border: 1px solid white;

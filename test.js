@@ -80,10 +80,10 @@ function init() {
     return new THREE.Vector3(x, y, z);
 }
 
+let starsGeometry = new THREE.BufferGeometry();
+starsGeometry.vertices = [];
 
-  let starsGeometry = new THREE.BufferGeometry();
-
-  for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 50; i++) {
     let particleStar = randomPointSphere(150);
 
     particleStar.velocity = THREE.MathUtils.randInt(50, 200);
@@ -93,7 +93,7 @@ function init() {
     particleStar.startZ = particleStar.z;
 
     starsGeometry.vertices.push(particleStar);
-  }
+}
 
   
   let starsMaterial = new THREE.PointsMaterial({

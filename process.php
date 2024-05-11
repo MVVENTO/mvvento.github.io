@@ -5,10 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'];
 
   // Email content (modify as needed)
-  $subject = 'Minimalistic Store - Order Confirmation';
+  $subject = 'Crystal Cove Order Confirmation';
   $message = "Thank you, $name, for your order! We will notify you when your items are shipped.";
-  $headers = 'From: Minimalistic Store <info@yourstore.com>' . "\r\n" .
-            'Reply-To: info@yourstore.com' . "\r\n" .
+  $headers = 'From: Crystal Cove <info@crystalcove.com>' . "\r\n" .
+            'Reply-To: info@crystalcove.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
   // Send the email
@@ -19,6 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 } else {
   // Redirect to the shop page if accessed directly
-  header('Location: shop.html');
+  header('Location: index.html');
 }
 ?>

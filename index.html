@@ -60,10 +60,24 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Offset to compensate for centering */
+    
+    .banner-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
     }
   </style>
 </head>
 <body>
+  <div class="banner-container">
+  <img src="banner.png" alt="Crystal cove Banner">
+</div>
   <div class="giphy-container">
     <iframe src="https://giphy.com/embed/ptIluiK86y7IEnKlmD" width="480" height="480" frameBorder="0" class="giphy-embed"></iframe>
   </div>

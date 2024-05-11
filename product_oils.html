@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crystal Cove</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5; /* Light background for better readability */
+    }
+
+    header {
+      background-color: #fff; /* Distinguish header from background */
+      padding: 20px;
+      display: flex; /* Use flexbox for better menu integration */
+      justify-content: space-between; /* Align menu button to the right */
+      align-items: center; /* Vertically center header content */
+    }
+
+    h1 {
+      margin: 0;
+      flex: 1; /* Ensures title fills remaining space in header */
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .product-item {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .product-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-item img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .product-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-item h3 {
+      margin: 15px 0 10px;
+      font-size: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    .product-item p.price {
+      margin: 5px 0;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      color: #555;
+    }
+
+    .product-item p.description {
+      font-size: 14px;
+      text-align: center;
+      color: #777;
+    }
+
+    .product-item button {
+      background-color: #000000;
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 15px;
+      display: block;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .product-item button:hover {
+      background-color: #222;
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+      .products {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Crystal Cove</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="addcart_email.html">Cart</a>
+      <a href="CrystalGuide.html">Crystal Guide</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="products">
+      <!-- Product items will be added dynamically here -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Crystal Cove</p>
+  </footer>
+
+  <script>
+    // Sample product data (replace with your actual data)
+    const products = [
+      {
+        name: "Moon oil",
+        image: "./img/Moon_oil.jpg",
+        price: 25.55,
+        description: "Moon oil is a natural blend of essential oils designed to promote relaxation and restful sleep. Its calming aroma helps to ease stress and anxiety, allowing you to unwind after a long day."
+      },
+      {
+        name: "Beauty Oil",
+        image: "./img/beauty_oil.png",
+        price: 33.33,
+        description: "Beauty Oil is a luxurious facial oil enriched with vitamins and antioxidants to nourish and hydrate your skin. Formulated with botanical extracts, it leaves your skin feeling soft, smooth, and radiant."
+      },
+
+      // Add more products as needed
+    ];
+
+    // Function to create a product item element
+    function createProductItem(product) {
+      const item = document.createElement('div');
+      item.classList.add('product-item');
+
+      const image = document.createElement('img');
+      image.src = product.image;
+      item.appendChild(image);
+
+      const name = document.createElement('h3');
+      name.textContent = product.name;
+      item.appendChild(name);
+
+      const price = document.createElement('p');
+      price.textContent = `$${product.price}`;
+      item.appendChild(price);
+      
+      const description = document.createElement('p');
+      description.textContent = product.description;
+      description.classList.add('description');
+      item.appendChild(description);
+      
+      const button = document.createElement('button');
+      button.textContent = "Add to Cart";
+      button.addEventListener('click', function() {
+        window.location.href = 'addcart_email.html';
+      });
+      item.appendChild(button);
+
+      return item;
+    }
+
+    // Get the product list container
+    const productList = document.querySelector('.products');
+
+    // Loop through products and create product items
+    products.forEach(product => {
+      const productItem = createProductItem(product);
+      productList.appendChild(productItem);
+    });
+  </script>
+</body>
+</html>

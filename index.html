@@ -9,13 +9,20 @@
     body {
       margin: 0;
       overflow: hidden;
+      justify-content: center;
+      align-items: center;
       width: 100vw;
       height: 100vh;
       background-image: url("https://user-images.githubusercontent.com/26748614/96337246-f14d4580-1085-11eb-8793-a86d929e034d.jpg");
       background-size: cover;
       backdrop-filter: brightness(50%);
     }
+ 
 
+    img {
+      max-width: 100%; /* Ensure the image does not exceed the container width */
+      max-height: 100%; /* Ensure the image does not exceed the container height */
+    }
     canvas {
       display: block;
     }
@@ -49,6 +56,7 @@
   </style>
 </head>
 <body>
+    <img src="./img/Crystal.png" alt="Crystal logo">
     <div id="canvas_container">
     <canvas class="webgl"></canvas>
   </div>

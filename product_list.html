@@ -3,24 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product List</title>
+  <title>Crystal Cove</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-image: url("https://user-images.githubusercontent.com/26748614/96337246-f14d4580-1085-11eb-8793-a86d929e034d.jpg");
-
+      background-color: #f5f5f5; /* Light background for better readability */
     }
 
     header {
-      background-color: #f5f5f5;
+      background-color: #fff; /* Distinguish header from background */
       padding: 20px;
-      text-align: center;
+      display: flex; /* Use flexbox for better menu integration */
+      justify-content: space-between; /* Align menu button to the right */
+      align-items: center; /* Vertically center header content */
     }
 
     h1 {
       margin: 0;
+      flex: 1; /* Ensures title fills remaining space in header */
+      text-align: center;
     }
 
     main {
@@ -45,39 +48,49 @@
       padding: 15px;
       text-align: center;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out; /* Add hover effect */
+    }
+
+    .product-item:hover {
+      transform: scale(1.02); /* Slight zoom on hover */
     }
 
     .product-item img {
-      width: 250px; /* Adjust the width to your desired dimension */
-      height: 250px; /* Adjust the height to your desired dimension */
-      object-fit: cover; /* Ensures the entire image is visible without distortion */
-      object-position: center; /* Centers the image within its container */
+      width: 200px; /* Adjust the width to your desired dimension */
+      height: 200px; /* Adjust the height to your desired dimension */
+      object-fit: cover;
+      object-position: center;
     }
 
     .product-item h3 {
       margin: 10px 0;
+      font-size: 18px; /* Increase font size for better readability */
     }
 
-    .product-item p {
+    .product-item p.price {
       margin: 5px 0;
+      font-weight: bold; /* Make price visually distinct */
+      font-size: 16px; /* Increase font size for price */
+    }
+
+    .product-item p.description { /* Add a description area */
+      margin: 5px 0;
+      font-size: 14px; /* Smaller font size for description */
+      height: 40px; /* Limit description height to avoid overflow */
+      overflow: hidden; /* Hide overflowing text with ellipsis (...) */
+      text-align: left; /* Align description text to the left */
     }
 
     .product-item button {
       background-color: #000000;
+      color: #fff; /* Light text color for dark button background */
       padding: 10px 20px;
       cursor: pointer;
       margin-top: 10px;
-      display: block; /* Center the button horizontally */
-      position: absolute;
-      bottom: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 1px solid white;
+      display: block;
+      border: none;
       border-radius: 5px;
-      -webkit-font-smoothing: antialiased;
       font-weight: bold;
-      cursor: pointer;
-      transition: all .3s;
     }
 
     /* Responsive adjustments for smaller screens */
@@ -90,8 +103,7 @@
 </head>
 <body>
   <header>
-      
-  <h1>Crystal Cove</h1>
+    <h1>Crystal Cove</h1>
     <button id="menu-btn">Menu</button>
     <nav>
       <ul>
@@ -100,8 +112,7 @@
       </ul>
     </nav>
   </header>
-  </header>
-  
+
   <main>
     <section class="products">
       <ul class="product-list">

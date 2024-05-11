@@ -29,72 +29,72 @@
     main {
       padding: 20px;
     }
- .glide__slide {
-      list-style: none;
-      background-color: #fff;
-      border-radius: 5px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease-in-out; /* Add hover effect */
-    }
 
-    .glide__slide:hover {
-      transform: scale(1.02); /* Slight zoom on hover */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
-   
 
     .product-item {
       background-color: #fff;
-      border-radius: 5px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease-in-out; /* Add hover effect */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
     }
 
     .product-item:hover {
-      transform: scale(1.03); /* Slight zoom on hover */
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     .product-item img {
-      width: 350px; /* Adjust the width to your desired dimension */
-      height: 350px; /* Adjust the height to your desired dimension */
-      object-fit: cover;
-      object-position: center;
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .product-item:hover img {
+      transform: scale(1.05);
     }
 
     .product-item h3 {
-      margin: 10px 0;
-      font-size: 22px; /* Increase font size for better readability */
+      margin: 15px 0 10px;
+      font-size: 20px;
+      text-align: center;
+      color: #333;
     }
 
     .product-item p.price {
       margin: 5px 0;
-      font-weight: bold; /* Make price visually distinct */
-      font-size: 18px; /* Increase font size for price */
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      color: #555;
     }
 
-    .product-item p.description { /* Add a description area */
-      margin: 5px 0;
-      font-size: 18px; /* Smaller font size for description */
-      height: 10px; /* Limit description height to avoid overflow */
-      text-align: right; /* Align description text to the left */
-      flex: 1; /* Take remaining space */
-      padding-left: 10px; /* Add padding to separate description from image */
-    }
+    .product-item p.description {
+      font-size: 14px;
+      text-align: center;
+      color: #777;
     }
 
     .product-item button {
       background-color: #000000;
-      color: #fff; /* Light text color for dark button background */
+      color: #fff;
       padding: 10px 20px;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 15px;
       display: block;
       border: none;
       border-radius: 5px;
       font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .product-item button:hover {
+      background-color: #222;
     }
 
     /* Responsive adjustments for smaller screens */
@@ -109,31 +109,21 @@
   <header>
     <h1>Crystal Cove</h1>
     <nav>
-<header>
-  <a href="index.html">Home</a>
-  <a href="addcart_email.html">Cart</a>
-</header>
-
+      <a href="index.html">Home</a>
+      <a href="addcart_email.html">Cart</a>
     </nav>
   </header>
 
-
-    <main>
-    <div class="glide">
-      <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides product-list">
-          <!-- Product items will be added dynamically here -->
-        </ul>
-      </div>
-      <div class="glide__arrows" data-glide-el="controls">
-        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
-      </div>
-    </div>
+  <main>
+    <section class="products">
+      <!-- Product items will be added dynamically here -->
+    </section>
   </main>
+
   <footer>
     <p>&copy; 2024 Crystal Cove</p>
   </footer>
+
   <script>
     // Sample product data (replace with your actual data)
     const products = [
@@ -141,59 +131,56 @@
         name: "Moon oil",
         image: "./img/Moon_oil.jpg",
         price: 25.55,
-        description: "Moon oil is a natural blend of essential oils designed to promote relaxation and restful sleep. Its calming aroma helps to ease stress and anxiety, allowing you to unwind after a long day.",
-
+        description: "Moon oil is a natural blend of essential oils designed to promote relaxation and restful sleep. Its calming aroma helps to ease stress and anxiety, allowing you to unwind after a long day."
       },
-        {
+      {
         name: "Beauty Oil",
         image: "./img/beauty_oil.png",
         price: 33.33,
-        description: "Beauty Oil is a luxurious facial oil enriched with vitamins and antioxidants to nourish and hydrate your skin. Formulated with botanical extracts, it leaves your skin feeling soft, smooth, and radiant.",
-
+        description: "Beauty Oil is a luxurious facial oil enriched with vitamins and antioxidants to nourish and hydrate your skin. Formulated with botanical extracts, it leaves your skin feeling soft, smooth, and radiant."
       },
-     {
-    name: "Smoky Quartz",
-    image: "./img/SmokyQuartz.jpg",
-    price: 33.33,
-    description: "Smoky Quartz is a protective and grounding stone. It brings physical and psychic protection and transforms negative energy."
-  },
-  {
-    name: "Moonstone",
-    image: "./img/moonstone.jpg",
-    price: 11.11,
-    description: "Moonstone is a stone of inner growth and strength. It soothes emotional instability and stress, and stabilizes the emotions, providing calmness."
-  },
-  {
-    name: "Celestite",
-    image: "./img/celestite.jpg",
-    price: 15.55,
-    description: "Celestite is known as a powerful healing crystal. It brings a calming and uplifting energy that helps to ease stress and anxiety."
-  },
-  {
-    name: "Malachite",
-    image: "./img/malachite.jpg",
-    price: 22.55,
-    description: "Malachite is a stone of transformation. It helps to clear and activate the chakras and stimulates dreams and imagery."
-  },
-  {
-    name: "Dragons Blood Jasper",
-    image: "./img/dragonsblood.jpg",
-    price: 33.33,
-    description: "Dragons Blood Jasper is a stone of courage and strength. It helps to attract prosperity and new opportunities."
-  },
-  {
-    name: "Fluorite",
-    image: "./img/fluorite.jpg",
-    price: 11.11,
-    description: "Fluorite is a highly protective and stabilizing stone. It helps to ground and harmonize spiritual energy."
-  },
-  // Add more products as needed
-];
-
+      {
+        name: "Smoky Quartz",
+        image: "./img/SmokyQuartz.jpg",
+        price: 33.33,
+        description: "Smoky Quartz is a protective and grounding stone. It brings physical and psychic protection and transforms negative energy."
+      },
+      {
+        name: "Moonstone",
+        image: "./img/moonstone.jpg",
+        price: 11.11,
+        description: "Moonstone is a stone of inner growth and strength. It soothes emotional instability and stress, and stabilizes the emotions, providing calmness."
+      },
+      {
+        name: "Celestite",
+        image: "./img/celestite.jpg",
+        price: 15.55,
+        description: "Celestite is known as a powerful healing crystal. It brings a calming and uplifting energy that helps to ease stress and anxiety."
+      },
+      {
+        name: "Malachite",
+        image: "./img/malachite.jpg",
+        price: 22.55,
+        description: "Malachite is a stone of transformation. It helps to clear and activate the chakras and stimulates dreams and imagery."
+      },
+      {
+        name: "Dragons Blood Jasper",
+        image: "./img/dragonsblood.jpg",
+        price: 33.33,
+        description: "Dragons Blood Jasper is a stone of courage and strength. It helps to attract prosperity and new opportunities."
+      },
+      {
+        name: "Fluorite",
+        image: "./img/fluorite.jpg",
+        price: 11.11,
+        description: "Fluorite is a highly protective and stabilizing stone. It helps to ground and harmonize spiritual energy."
+      }
+      // Add more products as needed
+    ];
 
     // Function to create a product item element
     function createProductItem(product) {
-      const item = document.createElement('li');
+      const item = document.createElement('div');
       item.classList.add('product-item');
 
       const image = document.createElement('img');
@@ -208,19 +195,17 @@
       price.textContent = `$${product.price}`;
       item.appendChild(price);
       
-      // Description
       const description = document.createElement('p');
       description.textContent = product.description;
       description.classList.add('description');
       item.appendChild(description);
       
-      // Add to Cart button
       const button = document.createElement('button');
       button.textContent = "Add to Cart";
       button.addEventListener('click', function() {
-      window.location.href = 'addcart_email.html'; // Redirect to addcart_email.html
+        window.location.href = 'addcart_email.html';
       });
-      item.appendChild(button);
+      item.appendChild(button
 
       return item;
     }
